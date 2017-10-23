@@ -134,6 +134,7 @@ window.addEventListener('load', function() {
 ```
 
 
+
 **Part2: The attack**
 An attack-server is provided on the following URL
 
@@ -144,4 +145,53 @@ http://www.csrflabattacker.com
 I can edit the */var/www/CSRF/Attacker/index.html* - file to inject my malicious code.
 
 Now I only have to make sure **Boby** clicks the link.
+![](img/catpic.png)
+
+*Picture*: **Alice** masterfullly crafts an irresistable message, which **Boby** just has to click. 
+
+![](img/edit-fail.png)
+
+*Picture*: I am observing that the form POST happens over and over again in a loop. 
+I do not understand why this is happening.
+
+![](img/private-post.png)
+
+*Picture*: The text is properly posted to the profile, but it is posted as private. Even though I am posting with accesslevel[description]=2. Private should have been accesslevel[description]=0.
+
+**UPDATE**! Found the fix
+
+```js
+"<input type='hidden' name='guid' value'39'>" // Wrong Alice's guid
+// to
+"<input type='hidden' name='guid' value'40'>"; // Changed to Boby's guid
+```
+
+I had put Alice's guid in the form which was meant for Boby.
+Simply changing it to value='40', made the attack working correctly.
+
+**Part 3: Questions**
+
+***Question 1***: How can *Alice* find *Boby's* user id? 
+*Answer*: She can try to send him a message, and then monitor the Request sent
+
+```http
+http://www.csrflabelgg.com/messages/compose?send_to=40*
+```
+
+*Note*: *Alice's* has clicked "send message" on *Boby's* profile, and can easily spot that his *guid=40*.
+
+***Question 2*** :  Can *Alice* find the *guid* of anyone that visits her, without knowing about them before hand.
+*Answer*: One possible solution I can think of:
+
+1. *Alice* does not need to know their *guid*, to make them add her as a friend, if we remember from *task1*
+
+   ```http
+   GET /action/friends/add?friend=39 //  39 is Alice's guid
+   ```
+
+2. Once she has them added, she can lookup her newest friends in the news feed.
+
+3. Trying to send a message to this friend now, will reveal his *guid*.
+
+### Task 3: Implementing Countermeasures for Elgg
 
