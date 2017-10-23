@@ -39,4 +39,13 @@ http:/csrflabelgg.com/action/friends/add?friend40
 
 **Part2: The attack**
 
-Now we somehow have to get Alice to click on the link. Maybe we just send a message to Alice.
+![](img/bobys-message.png)
+
+*Picture*: Now we somehow have to get Alice to click on the link. Conveniently the *CSRF Lab site* has a built in messaging system for unfriended users to talk to each other
+
+![](img/bobys-added.png)
+
+*Picture*: When Alice's clickes the Malicious link, a message appears in the top right corner, telling her that "Boby is added as a friend".
+
+### Task2: CSRF Attack using POST Request
+
