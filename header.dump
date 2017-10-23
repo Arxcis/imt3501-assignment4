@@ -1,0 +1,27 @@
+http://www.csrflabelgg.com/action/profile/edit
+
+POST /action/profile/edit HTTP/1.1
+Host: www.csrflabelgg.com
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:23.0) Gecko/20100101 Firefox/23.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://www.csrflabelgg.com/profile/alice/edit
+Cookie: Elgg=lo9p8k56rur2sd668ft13pfr23
+Connection: keep-alive
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 499
+__elgg_token=f89aa6bc5fafa4225de41785cdfadd10&__elgg_ts=1508768255&name=Alice&description=%3Cp%3Ehei%3C%2Fp%3E&accesslevel%5Bdescription%5D=2&briefdescription=&accesslevel%5Bbriefdescription%5D=2&location=&accesslevel%5Blocation%5D=2&interests=&accesslevel%5Binterests%5D=2&skills=&accesslevel%5Bskills%5D=2&contactemail=&accesslevel%5Bcontactemail%5D=2&phone=&accesslevel%5Bphone%5D=2&mobile=&accesslevel%5Bmobile%5D=2&website=&accesslevel%5Bwebsite%5D=2&twitter=&accesslevel%5Btwitter%5D=2&guid=39
+HTTP/1.1 302 Found
+Date: Mon, 23 Oct 2017 14:17:52 GMT
+Server: Apache/2.2.22 (Ubuntu)
+X-Powered-By: PHP/5.3.10-1ubuntu3.14
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+Pragma: no-cache
+Location: http://www.csrflabelgg.com/profile/alice
+Content-Length: 0
+Keep-Alive: timeout=5, max=100
+Connection: Keep-Alive
+Content-Type: text/html
+----------------------------------------------------------
