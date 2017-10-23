@@ -195,3 +195,40 @@ http://www.csrflabelgg.com/messages/compose?send_to=40*
 
 ### Task 3: Implementing Countermeasures for Elgg
 
+**Part 1: Turn on countermeasure "secret-token validation"** 
+Like mentioned earlier, the code for the validation can be found in 
+
+```
+/var/www/CSRF/elgg/engine/lib/actions.php
+```
+
+```php
+function action_gatekeeper($action) {
+
+	//SEED:Modified to enable CSRF.
+	//Comment the below return true statement to enable countermeasure.
+	//return true;
+
+	if ($action === 'login') {
+      ...
+```
+
+*Note*: Commenting out the **return true** to enable the countermeasure.
+
+![](img/missing-fields.png)
+
+*Picture*: After turning on the *secret-token* validation *Alice* no longer adds *Boby* as a friend when she clicks the malicious link. See the error message in top right corner.
+
+This is because the GET URL is now required to contain the **elgg_ts** and the **elgg_token** like so
+
+```http
+GET /action/friends/add?friend=39&__elgg_ts=1508757630&__elgg_token=f35aa5585b7a4e749ae1fde51d98b33a HTTP/1.1	
+```
+
+We can only craft a GET URL like this, from our 3rd party site
+
+````http
+GET /action/friends/add?friend=40 HTTP/1.1
+````
+
+The **elgg_ts** and the **elgg_token** are baked into the web-page sent from the server to the victim, running in the victims token. They are part of the specific page internal private state. They can only be accessed via javascript running on the same page, in the same tab, in the victims browser. This can be achieved using an **XSS** attack, but not with an CSRF attack alone.
